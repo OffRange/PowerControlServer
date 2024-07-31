@@ -12,7 +12,8 @@
 ### Prerequisites
 
 For communication to the target PC, you must have installed the **Power Control** Android app. 
-> [!INFO]
+
+> [!NOTE]
 > Currently the **Power Control** app is **only available for Android.**
 
 You can find the Power Control app on a separate GitHub
