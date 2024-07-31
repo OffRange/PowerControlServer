@@ -22,7 +22,7 @@ UdpServer::UdpServer(const Port port)
 UdpServer::~UdpServer() { Close(); }
 
 void UdpServer::ReceiveContinuous(ResponseCallback callback) {
-    std::byte buffer[BUFFER_SIZE];
+    unsigned char buffer[BUFFER_SIZE];
     started_ = true;
 
     sockaddr_in clientAddr;
@@ -43,8 +43,21 @@ void UdpServer::ReceiveContinuous(ResponseCallback callback) {
             continue;
         }
 
-        auto vector = std::vector<std::byte>(buffer, buffer + bytesRead);
-        callback(vector, [&]() { Close(); });
+        auto vector = std::vector<unsigned char>(buffer, buffer + bytesRead);
+        callback(
+            vector,
+            [&](const std::vector<unsigned char>& data) {
+                size_t bytesSent = sendto(
+                    socket_, reinterpret_cast<const char*>(data.data()),
+                    data.size(), 0, reinterpret_cast<sockaddr*>(&clientAddr),
+                    client_addr_len);
+
+                if (bytesSent == UDP_SOCKET_ERROR) {
+                    std::cerr << "sendto() failed with error code: <code>"
+                              << std::endl;
+                }
+            },
+            [&]() { Close(); });
     }
 }
 

@@ -12,20 +12,35 @@
 #include <iomanip>
 #include <iostream>
 
-void ProcessResponse(const std::vector<std::byte>& data, CloseFunction close) {
+#define HEARTBEAT_BYTE 0x00
+#define SHUTDOWN_BYTE 0x01
+#define RESTART_BYTE 0x02
+#define LOGOUT_BYTE 0x03
+
+void ProcessResponse(const std::vector<unsigned char>& data, SendFunction send,
+                     CloseFunction close) {
     std::cout << "Received: 0x";
-    for (std::byte byte : data) {
+    for (unsigned char byte : data) {
         std::cout << std::hex << std::setw(2) << std::setfill('0')
                   << (static_cast<char>(byte) & 0xff) << " ";
     }
     std::cout << std::dec << std::endl;
 
     if (data.size() == 1) {
-        if ((static_cast<char>(data[0]) & 0xff) == 0xa5) {
-            close();
-            if (!Shutdown()) {
-                std::cerr << "Shutdown failed! " << std::endl;
-            }
+        if ((static_cast<char>(data[0]) & 0xff) == HEARTBEAT_BYTE) {
+            RespondToHeartbeat(send);
+        }
+    } else if (data.size() == 2) {
+        switch (static_cast<char>(data[0]) & 0xff) {
+            case SHUTDOWN_BYTE:
+                if ((static_cast<char>(data[1]) & 0xff) == 0xa5) {
+                    close();
+                    if (!Shutdown()) {
+                        std::cerr << "Shutdown failed! " << std::endl;
+                    }
+                }
+            default:
+                break;
         }
     }
 }
@@ -64,3 +79,5 @@ bool Shutdown() {
     return reboot(RB_POWER_OFF) != 0;
 #endif  // _WIN32
 }
+
+void RespondToHeartbeat(SendFunction send) { send({0x00}); }

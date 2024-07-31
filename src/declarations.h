@@ -9,6 +9,7 @@
 using Port = unsigned short;
 
 using CloseFunction = std::function<void()>;
+using SendFunction  = std::function<void(std::vector<unsigned char> const&)>;
 
-using ResponseCallback =
-    std::function<void(std::vector<std::byte> const&, CloseFunction)>;
+using ResponseCallback = std::function<void(std::vector<unsigned char> const&,
+                                            SendFunction, CloseFunction)>;
