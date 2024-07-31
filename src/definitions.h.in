@@ -1,0 +1,6 @@
+#pragma once
+
+#define APP_NAME "@PROJECT_NAME@"
+#ifdef WIN32
+#define SERVICE_DLL_NAME "@SERVICE_DLL_NAME@"
+#endif  // WIN32
