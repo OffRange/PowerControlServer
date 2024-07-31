@@ -1,0 +1,10 @@
+[Unit]
+Description=@PROJECT_DESCRIPTION@
+
+[Service]
+ExecStart=@CMAKE_INSTALL_PREFIX@/bin/@SERVER_FILE_NAME@
+Restart=always
+User=root
+
+[Install]
+WantedBy=multi-user.target
