@@ -7,7 +7,7 @@
 > Please use the application with caution and report any issues via
 > the [Issues](https://github.com/OffRange/PowerControlServer/issues) page.
 
-**Power Control Server** is a lightweight application that enables remote management of your PC's power state via the **Power Control Android app**. By installing this server application, you can allow remote shutdown, reboot, log-out commands from your Android device.
+**Power Control Server** is a lightweight background service that enables remote management of your PC's power state via the **Power Control** Android app. By installing this server application, you can allow remote shutdown, reboot, log-out, and other power management commands from your Android device.
 
 ### Prerequisites
 
@@ -28,8 +28,21 @@ repository: [Power Control](https://github.com/OffRange/PowerControl)
 
 ## Installation
 
-This section is added soon.
+### Linux and macOS
 
+You can install **Power Control Server** on Linux or macOS by running the following command:
+
+```bash
+curl -sSL https://github.com/OffRange/PowerControlServer/raw/main/install.sh | bash
+```
+
+### Windows
+
+For Windows users, an installer is provided to install **Power Control Server** as a Windows Service:
+
+1. Download the latest Windows installer from the [Releases](https://github.com/OffRange/PowerControlServer/releases) page.
+2. Run the installer and follow the on-screen instructions to install **Power Control Server**.
+3. The server will automatically start as a Windows Service after installation.
 
 ## Configuration
 
