@@ -68,9 +68,4 @@ make -j$(nproc)
 echo "Installing the project..."
 sudo make install
 
-# Clean up (optional)
-echo "Cleaning up..."
-cd ../..
-rm -rf "${BUILD_DIR}"
-
 echo "Installation completed successfully!"
