@@ -185,11 +185,10 @@ if(WIN32)
     set(CPACK_NSIS_EXTRA_UNINSTALL_COMMANDS "
         ExecWait '\\\"$INSTDIR\\\\service.exe\\\" uninstall'
     ")
-else()
-    set(CPACK_GENERATOR "TGZ;ZIP")
+
+    include(CPack)
 endif()
 
-include(CPack)
 
 
 # Include additional files (optional)
