@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.19)
-project("Power Control Server" VERSION 0.1.0 DESCRIPTION "Power Control Server - A tool that enables remote shutdown")
+project("Power Control Server" VERSION 0.2.0 DESCRIPTION "Power Control Server - A tool that enables remote shutdown")
 set (CMAKE_CXX_STANDARD 20)
 
 # Enable Hot Reload for MSVC compilers if supported.
