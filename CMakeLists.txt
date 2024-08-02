@@ -160,6 +160,11 @@ set(CPACK_RESOURCE_FILE_README "${CMAKE_SOURCE_DIR}/README.md")
 
 # Set the installation directory for Windows
 if(WIN32)
+    # For Windows, require CMake 3.20 or higher
+    if(${CMAKE_VERSION} VERSION_LESS "3.20")
+        message(FATAL_ERROR "CMake 3.20 or higher is required on Windows.")
+    endif()
+
     set(CPACK_GENERATOR "NSIS")
     set(CPACK_NSIS_DISPLAY_NAME ${PROJECT_NAME})
     set(CPACK_NSIS_PACKAGE_NAME ${PROJECT_NAME})
