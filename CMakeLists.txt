@@ -27,6 +27,7 @@ target_include_directories(server_lib
     PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src
 )
 
+set(SERVICE_DLL_NAME service_msg)
 configure_file(src/definitions.h.in ${GENERATED_DIR}/definitions.h @ONLY)
 
 if(WIN32)
@@ -43,7 +44,6 @@ if(WIN32)
     )
     
     set(SERVICE_FILE_NAME service)
-    set(SERVICE_DLL_NAME service_msg)
 
     # Compile the .mc file using mc.exe and include the generated headers
     find_program(MC_COMPILER mc.exe)
