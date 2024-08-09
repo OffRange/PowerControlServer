@@ -28,6 +28,10 @@ repository: [Power Control](https://github.com/OffRange/PowerControl)
 
 ## Installation
 
+> [!CAUTION]
+> Only download the application from the official GitHub repository, as the application is not signed: [`OffRange/PowerControlServer`](https://github.com/OffRange/PowerControlServer).  
+> Always ensure that you are on the correct URL: [https://github.com/OffRange/PowerControlServer/releases](https://github.com/OffRange/PowerControlServer/releases).
+
 ### Linux and macOS
 
 You can install **Power Control Server** on Linux or macOS by running the following command:
