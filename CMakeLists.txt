@@ -107,7 +107,7 @@ if(WIN32)
     endif()
 
 
-    add_executable(${SERVICE_FILE_NAME} src/win/service/service.cpp ${GENERATED_DIR}/${SERVICE_DLL_NAME}.rc ${CMAKE_SOURCE_DIR}/res/test.rc)
+    add_executable(${SERVICE_FILE_NAME} src/win/service/service.cpp ${GENERATED_DIR}/${SERVICE_DLL_NAME}.rc ${CMAKE_SOURCE_DIR}/res/powercontrol.rc)
     target_link_libraries(${SERVICE_FILE_NAME} PRIVATE wsock32 ws2_32 advapi32 server_lib windows_lib)
     
     install(FILES ${GENERATED_DIR}/${SERVICE_DLL_NAME}.dll DESTINATION .)
